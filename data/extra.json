@@ -1,0 +1,30 @@
+{
+ "t_feat_ms": 20.3055202960968,
+ "t_tdms_ms": 1.2534737586975098,
+ "t_svm_fit_s": 0.0379481315612793,
+ "sarnet_fold_min": 1.8266666666666667,
+ "t_sarnet_inf_ms": 18.73159408569336,
+ "n_params": 230857,
+ "confusion_text": "Figure 6 shows the confusion matrix of SAR-Net on the Carnatic dataset. 15 of the 40 rāgas were recognised without error. The most frequent confusions were between Madhyamāvati and Śrī (8 recordings), Harikāmbhōji and Kāṁbhōji (8), and Hussēnī and Mukhāri (4); such pairs share most of their svaras and differ mainly in characteristic phrases and intonation.",
+ "confusion_caption": "Confusion matrix of SAR-Net on the Carnatic dataset (40 rāgas, alphabetical; off-diagonal counts shown)",
+ "fusion_carnatic": {
+  "acc": 0.8479166666666667,
+  "f1": 0.8431403404097123
+ },
+ "mcnemar_carnatic": {
+  "b": 23,
+  "c": 17,
+  "p": 0.42959050784338615,
+  "tdms_seed0_acc": 0.8354166666666667
+ },
+ "fusion_hindustani": {
+  "acc": 0.9733333333333334,
+  "f1": 0.9732915622389305
+ },
+ "mcnemar_hindustani": {
+  "b": 6,
+  "c": 3,
+  "p": 0.5078125,
+  "tdms_seed0_acc": 0.9633333333333334
+ }
+}
