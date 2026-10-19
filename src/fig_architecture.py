@@ -1,0 +1,27 @@
+import matplotlib; matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from matplotlib.patches import FancyBboxPatch
+plt.rcParams['font.family']='DejaVu Serif'
+fig,ax=plt.subplots(figsize=(9.5,3.9),dpi=220); ax.set_xlim(0,104); ax.set_ylim(0,44); ax.axis('off')
+def box(x,y,w,h,t,fc='#ffffff',ec='#333333',ls='-'):
+    ax.add_patch(FancyBboxPatch((x,y),w,h,boxstyle='round,pad=0.35,rounding_size=1.0',fc=fc,ec=ec,lw=1,ls=ls))
+    ax.text(x+w/2,y+h/2,t,ha='center',va='center',fontsize=6.6)
+def arr(x1,y1,x2,y2,c='#333333'): ax.annotate('',xy=(x2,y2),xytext=(x1,y1),arrowprops=dict(arrowstyle='-|>',color=c,lw=0.9))
+box(0.5,9.5,12.5,10,'Predominant pitch\nf(t) and tonic\n(dataset features)','#f2f2f2')
+box(16.5,9.5,13,10,'Tonic-normalised\ncents c(t)\n(Eq. 1)')
+box(15.5,30,15,10,'Training only:\ncorrection-aware\naugmentation (Eq. 4)','#eef4fc','#2a78d6','--')
+box(34,20,14.5,9,'30-s excerpts →\n120-bin folded\npitch-roll')
+box(52,20,15.5,9,'1-D CNN (96, 128)\n→ BiGRU (2×64)\n→ attention pooling')
+box(34,1,14.5,9,'PD-120 + 84 shruti\ndescriptors\n(Table 2)')
+box(52,1,15.5,9,'Dense 128\n(ReLU, dropout)')
+box(71,9.5,12,10,'Mean over\nexcerpts, then\nconcatenate')
+box(86.5,9.5,8,10,'Softmax\n(40 / 30\nrāgas)')
+box(97.5,9.5,6,10,'Rāga\nlabel','#f2f2f2')
+arr(13.4,14.5,16.1,14.5); arr(23,29.6,23,19.9,'#2a78d6')
+arr(29.9,16.5,33.6,24.5); arr(29.9,12.5,33.6,5.5)
+arr(48.9,24.5,51.6,24.5); arr(48.9,5.5,51.6,5.5)
+arr(67.9,24.5,70.6,17.5); arr(67.9,5.5,70.6,11.5)
+arr(83.4,14.5,86.1,14.5); arr(94.9,14.5,97.1,14.5)
+ax.text(50.8,31.3,'Contour branch: melodic movement and gamaka',ha='center',fontsize=6.4,style='italic',color='#444')
+ax.text(50.8,11.3,'Distribution branch: intonation and svara hierarchy',ha='center',fontsize=6.4,style='italic',color='#444')
+plt.savefig('figs/fig1_sarnet.png',bbox_inches='tight',facecolor='white')
